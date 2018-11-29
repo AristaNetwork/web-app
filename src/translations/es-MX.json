@@ -1,0 +1,15 @@
+{
+  "APP_NAME": "MifosX",
+  "About": "Acerca de",
+  "Home": "Inicio",
+  "Logged in as": "Conectado como",
+  "Login": "Iniciar sesión",
+  "Logout": "Cerrar sesión",
+  "Password": "Contraseña",
+  "Password is required": "La contraseña es requerida",
+  "Username": "Usuario",
+  "Username is required": "El usuario es requerido",
+  "Username or password incorrect.": "Usuario o contraseña son incorrecto",
+  "Remember me": "Recordarme",
+  "Version": "Version"
+}
