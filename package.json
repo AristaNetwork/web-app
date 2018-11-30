@@ -1,6 +1,6 @@
 {
   "name": "mifosx-web-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "MifosX Web App is the default web application built on top of the Fineract platform for the Mifos user community leveraging the popular Angular framework.",
   "keywords": [
     "mifos",
@@ -21,7 +21,8 @@
     "e2e": "npm run env -s && ng e2e",
     "translations:extract": "ngx-translate-extract --input ./src --output ./src/translations/template.json --format=json --clean -sort --marker extract",
     "docs": "hads ./docs -o",
-    "env": "ngx-scripts env npm_package_version"
+    "env": "ngx-scripts env npm_package_version",
+    "compodoc": "npm run env -s && compodoc -p tsconfig.json"
   },
   "dependencies": {
     "@angular/animations": "6.0.6",

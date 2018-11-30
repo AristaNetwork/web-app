@@ -5,7 +5,7 @@ export const environment = {
   production: true,
   version: env.npm_package_version,
   fineractPlatformTenantId: 'default',  // For connecting to server running elsewhere update the tenant identifier
-  baseApiUrl: 'https://sandboxmifos.conserva.org.mx',  // For connecting to server running elsewhere update the base API URL
+  baseApiUrl: 'https://mifos.conserva.org.mx',  // For connecting to server running elsewhere update the base API URL
   apiProvider: '/fineract-provider/api',
   apiVersion: '/v1',
   serverUrl: '',
@@ -13,10 +13,10 @@ export const environment = {
     enabled: false,  // For connecting to Mifos X using OAuth2 Authentication change the value to true
     serverUrl: ''
   },
-  defaultLanguage: 'en-US',
+  defaultLanguage: 'es-MX',
   supportedLanguages: [
     'en-US',
-    'fr-FR'
+    'es-MX'
   ]
 };
 
