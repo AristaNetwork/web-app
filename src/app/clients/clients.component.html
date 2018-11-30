@@ -1,5 +1,9 @@
 <div class="container m-t-40 m-b-40">
-
+  <div style="text-align: right">
+    <a mat-raised-button color="primary" routerLink="cheque">
+      New Client
+    </a>
+  </div>
   <mat-form-field class="filter">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
