@@ -17,6 +17,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@components/*": ["app/components/*"],
+      "@directives/*": ["app/directives/*"],
+      "@services/*": ["app/services/*"],
+      "@pipes/*": ["app/pipes/*"],
+      "@helpers/*": ["app/helpers/*"],
+      "@env/*": ["environments/*"],
+    }
   }
 }
