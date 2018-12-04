@@ -1,16 +1,12 @@
 /** Angular Imports */
 import { Injectable } from '@angular/core';
-
-/** Translation Imports */
+import { Observable } from 'rxjs';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { LocalStorageService } from '@services/local-storage/local-storage.service';
+import { environment } from '@env/environment';
 
 /** Custom Services */
 import { Logger } from '../logger/logger.service';
-
-/** Other Imports */
-import { includes } from 'lodash';
-import * as enUS from '../../../translations/en-US.json';
-import * as frFR from '../../../translations/fr-FR.json';
 
 /** Initialize Logger */
 const log = new Logger('I18nService');
@@ -25,34 +21,34 @@ export function extract(s: string) {
   return s;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class I18nService {
 
-  /** Key to store current language of application in local storage. */
-  private languageStorageKey = 'mifosXLanguage';
+  /**
+   * 
+   * @param translateService 
+   * @param localStorageSrv 
+   */
 
-  defaultLanguage: string;
-  supportedLanguages: string[];
-
-  constructor(private translateService: TranslateService) {
-    // Embed languages to avoid extra HTTP requests
-    translateService.setTranslation('en-US', enUS);
-    translateService.setTranslation('fr-FR', frFR);
-  }
+  constructor(
+    private translateService: TranslateService,
+    private localStorageSrv: LocalStorageService
+  ) {}
 
   /**
    * Initializes i18n for the application.
    * Loads language from local storage if present, or sets default language.
-   * @param {!string} defaultLanguage The default language to use.
-   * @param {Array.<String>} supportedLanguages The list of supported languages.
    */
-  init(defaultLanguage: string, supportedLanguages: string[]) {
-    this.defaultLanguage = defaultLanguage;
-    this.supportedLanguages = supportedLanguages;
-    this.language = '';
 
-    this.translateService.onLangChange
-      .subscribe((event: LangChangeEvent) => { localStorage.setItem(this.languageStorageKey, event.lang); });
+  public init(): void {
+    this.translateService.setDefaultLang( environment.defaultLanguage );
+    this.language = null;
+
+    this.translateService.onLangChange.subscribe(
+      (event: LangChangeEvent) => this.localStorageSrv.setLang( event.lang )
+    );
   }
 
   /**
@@ -61,21 +57,13 @@ export class I18nService {
    * If no parameter is specified, the language is loaded from local storage (if present).
    * @param {string} language The IETF language code to set.
    */
+
   set language(language: string) {
-    language = language || localStorage.getItem(this.languageStorageKey) || this.translateService.getBrowserCultureLang();
-    let isSupportedLanguage = includes(this.supportedLanguages, language);
+    language = language || this.localStorageSrv.getLang() || this.translateService.getBrowserCultureLang();
 
-    // If no exact match is found, search without the region
-    if (language && !isSupportedLanguage) {
-      language = language.split('-')[0];
-      language = this.supportedLanguages.find(supportedLanguage => supportedLanguage.startsWith(language)) || '';
-      isSupportedLanguage = Boolean(language);
-    }
-
-    // Fallback if language is not supported
-    if (!isSupportedLanguage) {
-      language = this.defaultLanguage;
-    }
+    // It checks if the language is not supported
+    if ( !new Set( environment.supportedLanguages ).has( language ) ) 
+      language = this.translateService.getDefaultLang();
 
     log.debug(`Language set to ${language}`);
     this.translateService.use(language);
@@ -85,8 +73,26 @@ export class I18nService {
    * Gets the current language.
    * @return {string} The current language code.
    */
+
   get language(): string {
     return this.translateService.currentLang;
+  }
+
+  /**
+   * It gets the language supported
+   * @returns Lista of languages supported
+   */
+
+  get languages(): string[] {
+    return environment.supportedLanguages || [];
+  }
+
+  /**
+   * Observable that is emitted when the language changes
+   */
+
+  get onLanguageChange(): Observable<LangChangeEvent> {
+    return this.translateService.onLangChange;
   }
 
 }

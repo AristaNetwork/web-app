@@ -1,9 +1,7 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import { Response} from '@angular/http';
 import {ClientsService} from './clients.service';
-import {DataSource} from '@angular/cdk/collections';
-import { Observable } from 'rxjs';
+
 @Component({
   selector: 'mifosx-clients',
   templateUrl: './clients.component.html',
@@ -20,7 +18,11 @@ export class ClientsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private clientService: ClientsService) {}
+  constructor(
+    private clientService: ClientsService
+  ) {
+
+  }
 
   ngOnInit() {
        this.getClients();

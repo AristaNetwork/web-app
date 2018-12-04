@@ -8,7 +8,6 @@ import { Route } from '../core/route/route.service';
 import { extract } from '../core/i18n/i18n.service';
 
 import { ClientsComponent } from './clients.component';
-import { CreateClientComponent} from './create-client/create-client.component';
 import { ViewClientComponent } from './view-client/view-client.component';
 import { ViewLoanComponent } from './view-loan/view-loan.component';
 import { CreateAddressComponent } from './create-address/create-address.component';
@@ -26,8 +25,7 @@ const routes: Routes = [
     },
     {
       path: 'clients/create',
-      component: CreateClientComponent,
-      data: { title: extract('Create Client') }
+      loadChildren: './form-client/form-client.module#FormClientModule' // './create-client/create-client.module#CreateClientModule'
     },
     {
       path: 'clients/view/:id',

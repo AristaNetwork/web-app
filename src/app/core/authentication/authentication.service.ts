@@ -103,7 +103,7 @@ export class AuthenticationService {
           })
         );
     } else {
-      return this.http.post('/authentication', {}, { params: httpParams })
+      return this.http.post(`${environment.serverUrl}/authentication`, {}, { params: httpParams })
         .pipe(
           map((credentials: Credentials) => {
             this.onLoginSuccess(credentials);

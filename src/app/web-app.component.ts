@@ -12,7 +12,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 /** Environment Configuration */
-import { environment } from 'environments/environment';
+import { environment } from '@env/environment';
 
 /** Custom Services */
 import { Logger } from './core/logger/logger.service';
@@ -46,14 +46,19 @@ export class WebAppComponent implements OnInit {
    * @param {MatSnackBar} snackBar Material Snackbar for notifications.
    * @param {AlertService} alertService Alert Service.
    */
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private titleService: Title,
-              private translateService: TranslateService,
-              private i18nService: I18nService,
-              private themeStorageService: ThemeStorageService,
-              public snackBar: MatSnackBar,
-              private alertService: AlertService) { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    private translateService: TranslateService,
+    private i18nService: I18nService,
+    private themeStorageService: ThemeStorageService,
+    public snackBar: MatSnackBar,
+    private alertService: AlertService
+  ) { 
+    // Setup translations
+    this.i18nService.init();
+  }
 
   /**
    * Initial Setup:
@@ -69,14 +74,13 @@ export class WebAppComponent implements OnInit {
    * 5) Alerts
    */
   ngOnInit() {
+
     // Setup logger
     if (environment.production) {
       Logger.enableProductionMode();
     }
-    log.debug('init');
 
-    // Setup translations
-    this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
+    log.debug('init');
 
     // Change page title on navigation or language change, based on route data
     const onNavigationEnd = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
