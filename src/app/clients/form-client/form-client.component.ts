@@ -23,12 +23,6 @@ export class FormClientComponent implements OnInit {
    */
 
   public formClient: FormGroup;
-
-  /**
-   * It contains all the data sent on the data property in the routing config
-   */
-
-  public routeData: any = {};
   
   /**
    * 
@@ -404,14 +398,37 @@ export class FormClientComponent implements OnInit {
     // console.log('ERRORS: ', this.formClient.get('personalData.firstname').errors);
   }
 
+  /**
+   * It fills the form with the client data to edit
+   */
+
+  private fillFormByEditing(): void {
+    const paramId = this.activeRoute.snapshot.params['id'];
+
+    if (paramId) {
+      this.formClient.patchValue({
+        officeId: 1,
+        legalFormId: 1,
+        staffId: 1,
+        genderId: 1,
+        firstname: "Luis",
+        middlename: "Aguilar",
+        lastname: "Ortiz",
+        curp: "AAAA123456HAAAAA12",
+        rfc: "AAA123456AAA",
+        dateFormat: "dd MMMM yyyy",
+        activationDate: "29 November 2018",
+        submittedOnDate: "29 November 2018",
+        dateOfBirth: "13 August 2000",
+        savingsProductId: null
+      });
+    }
+  }
 
   ngOnInit() {
     this.createForm();
 
-    // get the route data
-    this.activeRoute.data.subscribe( data => {
-      this.routeData = data || {};
-    });
+    this.fillFormByEditing();
   }
 
 }

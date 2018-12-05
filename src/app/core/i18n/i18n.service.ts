@@ -46,9 +46,9 @@ export class I18nService {
     this.translateService.setDefaultLang( environment.defaultLanguage );
     this.language = null;
 
-    this.translateService.onLangChange.subscribe(
-      (event: LangChangeEvent) => this.localStorageSrv.setLang( event.lang )
-    );
+    // this.translateService.onLangChange.subscribe(
+    //   (event: LangChangeEvent) => this.localStorageSrv.setLang( event.lang )
+    // );
   }
 
   /**

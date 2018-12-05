@@ -1,12 +1,12 @@
 /** Angular Imports */
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 /** Tanslation Imports */
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 /** Chart Imports */
@@ -37,11 +37,14 @@ import { SystemModule } from './system/system.module';
 /** Main Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 
+import { I18nService } from '../app/core/i18n/i18n.service';
 
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
-}
+// Resgister langs
+import { registerLocaleData } from '@angular/common';
+import localeMX from '@angular/common/locales/es-MX';
+
+// Resgisting the langs
+registerLocaleData( localeMX, 'es-MX' );
 
 /**
  * App Module
@@ -77,7 +80,21 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule
   ],
   declarations: [WebAppComponent, NotFoundComponent],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useFactory: getLanguage,
+    deps: [ I18nService ]
+  }],
   bootstrap: [WebAppComponent]
 })
 export class AppModule { }
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
+
+// Configure the language to the app
+export function getLanguage(s: I18nService) {
+  return s.language;
+}

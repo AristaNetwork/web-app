@@ -2,12 +2,11 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
+// routing
+import { ClientsRoutingModule } from './clients-routing.module';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-// routing
-import { ClientsRoutingModule } from './clients-routing.module';
 
 
 import { CoreModule } from '../core/core.module';

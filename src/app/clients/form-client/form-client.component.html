@@ -1,18 +1,17 @@
-
 <form [formGroup]="formClient" (ngSubmit)="submit()" novalidate>
   <mat-vertical-stepper #clientStepper>
 
     <!-- Formulario de ejemplo -->
     <mat-step>
       <ng-template matStepLabel> 
-        <b>{{ 'formClient.personalData' | translate }}</b>
+        <b>{{ 'clients.formClient.personalData' | translate }}</b>
       </ng-template>
 
       <div *ngIf="clientStepper.selectedIndex == 0">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex="100%">
-            <mat-select placeholder="{{ 'formClient.office' | translate }}" formControlName="officeId" required>
-              <mat-option value="1">Oficina principal</mat-option>
+            <mat-select placeholder="{{ 'clients.formClient.office' | translate }}" formControlName="officeId" required>
+              <mat-option [value]="1">Oficina principal</mat-option>
             </mat-select>
             <!-- <mat-error *ngIf="formPersonalData.get('officeId').invalid">
               {{ formPersonalData.get('officeId').errors | errorMessage }}
@@ -22,16 +21,16 @@
 
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="40" fxFlex.md="40">
-            <mat-label>{{ 'formClient.firstname' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.firstname' | translate }}" formControlName="firstname" required>
+            <mat-label>{{ 'clients.formClient.firstname' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.firstname' | translate }}" formControlName="firstname" required>
             <!-- <mat-error *ngIf="formPersonalData.get('firstname').invalid">
               {{ formPersonalData.get('firstname').errors | errorMessage : { maxlength: [50] } }}
             </mat-error> -->
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="40" fxFlex.md="40">
-            <mat-label>{{ 'formClient.middlename' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.middlename' | translate }}" formControlName="middlename" required>
+            <mat-label>{{ 'clients.formClient.middlename' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.middlename' | translate }}" formControlName="middlename" required>
             <!-- <mat-error *ngIf="formPersonalData.get('middlename').invalid">
               {{ formPersonalData.get('middlename').errors | errorMessage : { maxlength: [50] } }}
             </mat-error> -->
@@ -39,7 +38,7 @@
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="40" fxFlex.md="40">
             <mat-label>{{ 'lastname' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.lastname' | translate }}" formControlName="lastname" required>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.lastname' | translate }}" formControlName="lastname" required>
             <!-- <mat-error *ngIf="formPersonalData.get('lastname').invalid">
               {{ formPersonalData.get('lastname').errors | errorMessage : { maxlength: [50] } }}
             </mat-error> -->
@@ -48,9 +47,9 @@
   
         <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="calc(50% - 15px)" fxFlex.md="calc(20.5% - 15px)">
-            <mat-select placeholder="{{ 'formClient.gender' | translate }}" formControlName="genderId" required>
-              <mat-option value="1">Hombre</mat-option>
-              <mat-option value="2">Mujer</mat-option>
+            <mat-select placeholder="{{ 'clients.formClient.gender' | translate }}" formControlName="genderId" required>
+              <mat-option [value]="1">Hombre</mat-option>
+              <mat-option [value]="2">Mujer</mat-option>
             </mat-select>
             <!-- <mat-error *ngIf="formPersonalData.get('genderId').invalid">
               {{ formPersonalData.get('genderId').errors | errorMessage }}
@@ -58,7 +57,7 @@
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="calc(50% - 15px)" fxFlex.md="calc(20.5% - 15px)">
-            <mat-select placeholder="{{ 'formClient.maritalStatus' | translate }}" formControlName="maritalStatus" required>
+            <mat-select placeholder="{{ 'clients.formClient.maritalStatus' | translate }}" formControlName="maritalStatus" required>
               <mat-option value="1">Casado</mat-option>
               <mat-option value="2">Soltero</mat-option>
             </mat-select>
@@ -68,14 +67,14 @@
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="calc(50% - 15px)" fxFlex.md="calc(20.5% - 15px)">
-            <mat-select placeholder="{{ 'formClient.degree' | translate }}" formControlName="scholarship">
+            <mat-select placeholder="{{ 'clients.formClient.degree' | translate }}" formControlName="scholarship">
               <mat-option value="H">Primaria</mat-option>
               <mat-option value="M">Secundaria</mat-option>
             </mat-select>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="calc(50% - 15px)" fxFlex.md="calc(20.5% - 15px)">
-            <mat-select placeholder="{{ 'formClient.profession' | translate }}" formControlName="profession">
+            <mat-select placeholder="{{ 'clients.formClient.profession' | translate }}" formControlName="profession">
               <mat-option value="H">Web developer</mat-option>
               <mat-option value="M">Abogado</mat-option>
             </mat-select>
@@ -84,24 +83,24 @@
   
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex.xs="100%" fxFlex.md="40">
-            <mat-label>{{ 'formClient.electorKey' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.electorKey' | translate }}" formControlName="electorKey">
+            <mat-label>{{ 'clients.formClient.electorKey' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.electorKey' | translate }}" formControlName="electorKey">
             <!-- <mat-error *ngIf="formPersonalData.get('electorKey').invalid">
               {{ formPersonalData.get('electorKey').errors | errorMessage }}
             </mat-error> -->
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="40">
-            <mat-label>{{ 'formClient.curp' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.curp' | translate }}" formControlName="curp" required>
+            <mat-label>{{ 'clients.formClient.curp' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.curp' | translate }}" formControlName="curp" required>
             <!-- <mat-error *ngIf="formPersonalData.get('curp').invalid">
               {{ formPersonalData.get('curp').errors | errorMessage : { pattern: ['la CURP'] } }}
             </mat-error> -->
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="40">
-            <mat-label>{{ 'formClient.rfc' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.rfc' | translate }}" formControlName="rfc" required>
+            <mat-label>{{ 'clients.formClient.rfc' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.rfc' | translate }}" formControlName="rfc" required>
             <!-- <mat-error *ngIf="formPersonalData.get('rfc').invalid">
               {{ formPersonalData.get('rfc').errors | errorMessage : { pattern: ['el RFC'] } }}
             </mat-error> -->
@@ -110,20 +109,20 @@
   
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
-            <mat-label>{{ 'formClient.electronicSignature' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.electronicSignature' | translate }}" formControlName="electronicSignature">
+            <mat-label>{{ 'clients.formClient.electronicSignature' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.electronicSignature' | translate }}" formControlName="electronicSignature">
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
-            <mat-label>{{ 'formClient.IDProspera' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.IDProspera' | translate }}" formControlName="IDProspera">
+            <mat-label>{{ 'clients.formClient.IDProspera' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.IDProspera' | translate }}" formControlName="IDProspera">
           </mat-form-field>
         </div>
   
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
-            <mat-label>{{ 'formClient.birthday' | translate }}</mat-label>
-            <input matInput [matDatepicker]="birthday" placeholder="{{ 'formClient.birthday' | translate }}" formControlName="birthday" required>
+            <mat-label>{{ 'clients.formClient.birthday' | translate }}</mat-label>
+            <input matInput [matDatepicker]="birthday" placeholder="{{ 'clients.formClient.birthday' | translate }}" formControlName="birthday" required>
             <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
             <mat-datepicker #birthday disabled="false"></mat-datepicker>
             <!-- <mat-error *ngIf="formPersonalData.get('birthday').invalid">
@@ -132,7 +131,7 @@
           </mat-form-field>
 
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
-            <mat-select placeholder="{{ 'formClient.birthdayEntity' | translate }}" formControlName="birthdayEntity" required>
+            <mat-select placeholder="{{ 'clients.formClient.birthdayEntity' | translate }}" formControlName="birthdayEntity" required>
               <mat-option value="1">Chiapas -CS</mat-option>
             </mat-select>
             <!-- <mat-error *ngIf="formPersonalData.get('birthdayEntity').invalid">
@@ -143,8 +142,8 @@
   
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
-            <mat-label>{{ 'formClient.requestDate' | translate }}</mat-label>
-            <input matInput [matDatepicker]="requestDate" placeholder="{{ 'formClient.requestDate' | translate }}" formControlName="requestDate" required>
+            <mat-label>{{ 'clients.formClient.requestDate' | translate }}</mat-label>
+            <input matInput [matDatepicker]="requestDate" placeholder="{{ 'clients.formClient.requestDate' | translate }}" formControlName="requestDate" required>
             <mat-datepicker-toggle matSuffix [for]="requestDate"></mat-datepicker-toggle>
             <mat-datepicker #requestDate disabled="false"></mat-datepicker>
             <!-- <mat-error *ngIf="formPersonalData.get('requestDate').invalid">
@@ -153,8 +152,8 @@
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
-            <mat-label>{{ 'formClient.numberDependents' | translate }}</mat-label>
-            <input matInput type="text" placeholder="{{ 'formClient.numberDependents' | translate }}" formControlName="numberDependents">
+            <mat-label>{{ 'clients.formClient.numberDependents' | translate }}</mat-label>
+            <input matInput type="text" placeholder="{{ 'clients.formClient.numberDependents' | translate }}" formControlName="numberDependents">
             <!-- <mat-error *ngIf="formPersonalData.get('numberDependents').invalid">
               {{ formPersonalData.get('numberDependents').errors | errorMessage }}
             </mat-error> -->
@@ -166,20 +165,20 @@
           <div fxLayout="row wrap" fxLayoutAlign="space-evenly">
             <div fxFlex.xs="100%">
               <br><br>
-              {{ 'formClient.speakNativeLanguage' | translate }}
+              {{ 'clients.formClient.speakNativeLanguage' | translate }}
               <br><br>
               <mat-radio-group fxLayout fxLayoutAlign="space-evenly" formControlName="speakNativeLanguage">
-                <mat-radio-button color="primary" [value]="true">{{ 'formClient.yes' | translate }}</mat-radio-button>
-                <mat-radio-button color="primary" [value]="false">{{ 'formClient.no' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="true">{{ 'clients.formClient.yes' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="false">{{ 'clients.formClient.no' | translate }}</mat-radio-button>
               </mat-radio-group>
             </div>
             <div fxFlex.xs="100%">
               <br><br>
-              {{ 'formClient.hasDisabilities' | translate }}
+              {{ 'clients.formClient.hasDisabilities' | translate }}
               <br><br>
               <mat-radio-group fxLayout fxLayoutAlign="space-evenly" formControlName="hasDisabilities">
-                <mat-radio-button color="primary" [value]="true">{{ 'formClient.yes' | translate }}</mat-radio-button>
-                <mat-radio-button color="primary" [value]="false">{{ 'formClient.no' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="true">{{ 'clients.formClient.yes' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="false">{{ 'clients.formClient.no' | translate }}</mat-radio-button>
               </mat-radio-group>
             </div>
           </div>
@@ -187,28 +186,28 @@
           <div fxLayout="row wrap" fxLayoutAlign="space-evenly">
             <div fxFlex.xs="100%">
               <br><br>
-              {{ 'formClient.hasInternet' | translate }}
+              {{ 'clients.formClient.hasInternet' | translate }}
               <br><br>
               <mat-radio-group fxLayout fxLayoutAlign="space-evenly" formControlName="hasInternet">
-                <mat-radio-button color="primary" [value]="true">{{ 'formClient.yes' | translate }}</mat-radio-button>
-                <mat-radio-button color="primary" [value]="false">{{ 'formClient.no' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="true">{{ 'clients.formClient.yes' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="false">{{ 'clients.formClient.no' | translate }}</mat-radio-button>
               </mat-radio-group>
             </div>
             <div fxFlex.xs="100%">
               <br><br>
-              {{ 'formClient.useSocialNetworks' | translate }}
+              {{ 'clients.formClient.useSocialNetworks' | translate }}
               <br><br>
               <mat-radio-group fxLayout fxLayoutAlign="space-evenly" formControlName="useSocialNetworks">
-                <mat-radio-button color="primary" [value]="true">{{ 'formClient.yes' | translate }}</mat-radio-button>
-                <mat-radio-button color="primary" [value]="false">{{ 'formClient.no' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="true">{{ 'clients.formClient.yes' | translate }}</mat-radio-button>
+                <mat-radio-button color="primary" [value]="false">{{ 'clients.formClient.no' | translate }}</mat-radio-button>
               </mat-radio-group>
             </div>
           </div>
   
           <div class="text-center">
             <br><br>
-            <button mat-raised-button matStepperNext type="button" color="primary">{{ 'formClient.next' | translate }}</button>
-            <button mat-raised-button color="primary">{{ 'formClient.send' | translate }}</button>
+            <button mat-raised-button matStepperNext type="button" color="primary">{{ 'clients.formClient.next' | translate }}</button>
+            <button mat-raised-button color="primary">{{ 'clients.formClient.send' | translate }}</button>
           </div>
   
         </div>

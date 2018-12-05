@@ -25,7 +25,17 @@ const routes: Routes = [
     },
     {
       path: 'clients/create',
-      loadChildren: './form-client/form-client.module#FormClientModule' // './create-client/create-client.module#CreateClientModule'
+      loadChildren: './form-client/form-client.module#FormClientModule',
+      data: {
+        breadcrumb: 'clients.formClient.createClient'
+      } 
+    },
+    {
+      path: 'clients/edit/:id',
+      loadChildren: './form-client/form-client.module#FormClientModule',
+      data: {
+        breadcrumb: 'clients.formClient.editClient'
+      } 
     },
     {
       path: 'clients/view/:id',

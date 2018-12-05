@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 
 /** Custom Services */
 import { I18nService } from '../../core/i18n/i18n.service';
+import { LocalStorageService } from '@services/local-storage/local-storage.service';
 
 /**
  * Language selector component.
@@ -26,9 +27,16 @@ export class LanguageSelectorComponent implements OnInit {
    * @param {I18nService} i18nService Internationalization Service.
    */
 
-  constructor(private i18nService: I18nService) {
+  constructor(
+    private i18nService: I18nService,
+    private localStorageSrv: LocalStorageService
+    ) {
     this.languageSelector.setValue( this.i18nService.language );
-    this.languageSelector.valueChanges.subscribe( val => this.i18nService.language = val );
+    this.languageSelector.valueChanges.subscribe( val => {
+      this.localStorageSrv.setLang( val );
+      this.i18nService.language = val; 
+      window.location.reload();
+    });
   }
 
   ngOnInit() {
