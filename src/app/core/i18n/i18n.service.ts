@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { LocalStorageService } from '@services/local-storage/local-storage.service';
+import { ErrorMessageService } from '@pipes/error-message/error-message';
 import { environment } from '@env/environment';
 
 /** Custom Services */
@@ -21,6 +22,10 @@ export function extract(s: string) {
   return s;
 }
 
+/**
+ * Service that manages the internationalization of the app
+ */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,11 +35,13 @@ export class I18nService {
    * 
    * @param translateService 
    * @param localStorageSrv 
+   * @param errorMsgSrv Service that translates and shows the errors 
    */
 
   constructor(
     private translateService: TranslateService,
-    private localStorageSrv: LocalStorageService
+    private localStorageSrv: LocalStorageService,
+    private errorMsgSrv: ErrorMessageService
   ) {}
 
   /**
@@ -45,10 +52,6 @@ export class I18nService {
   public init(): void {
     this.translateService.setDefaultLang( environment.defaultLanguage );
     this.language = null;
-
-    // this.translateService.onLangChange.subscribe(
-    //   (event: LangChangeEvent) => this.localStorageSrv.setLang( event.lang )
-    // );
   }
 
   /**
@@ -67,6 +70,7 @@ export class I18nService {
 
     log.debug(`Language set to ${language}`);
     this.translateService.use(language);
+    this.errorMsgSrv.use( language );
   }
 
   /**

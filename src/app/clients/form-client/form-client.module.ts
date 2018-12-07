@@ -25,7 +25,7 @@ import {
 // import { SeasonalitySaleModule } from '@components/seasonality-sale/seasonality-sale.module';
 
 // // Pipes
-// import { ErrorMessageModule } from '@pipes/error-message/error-message.module';
+import { ErrorMessageModule } from '@pipes/error-message/error-message';
 
 // Components
 import { FormClientComponent } from './form-client.component';
@@ -44,7 +44,7 @@ import { FormClientComponent } from './form-client.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    // ErrorMessageModule,
+    ErrorMessageModule,
     MatCheckboxModule,
     MatSliderModule,
     // ChipsPhonesModule,

@@ -3,12 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
-
-/** rxjs Imports */
 import { merge } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
-
-/** Translation Imports */
 import { TranslateService } from '@ngx-translate/core';
 
 /** Environment Configuration */

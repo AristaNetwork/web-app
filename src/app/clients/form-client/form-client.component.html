@@ -1,3 +1,4 @@
+{{ '2018-12-01' | date: 'longDate' }}
 <form [formGroup]="formClient" (ngSubmit)="submit()" novalidate>
   <mat-vertical-stepper #clientStepper>
 
@@ -13,9 +14,9 @@
             <mat-select placeholder="{{ 'clients.formClient.office' | translate }}" formControlName="officeId" required>
               <mat-option [value]="1">Oficina principal</mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="formPersonalData.get('officeId').invalid">
-              {{ formPersonalData.get('officeId').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('officeId').invalid">
+              {{ formClient.get('officeId').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -23,25 +24,25 @@
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="40" fxFlex.md="40">
             <mat-label>{{ 'clients.formClient.firstname' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.firstname' | translate }}" formControlName="firstname" required>
-            <!-- <mat-error *ngIf="formPersonalData.get('firstname').invalid">
-              {{ formPersonalData.get('firstname').errors | errorMessage : { maxlength: [50] } }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('firstname').invalid">
+              {{ formClient.get('firstname').errors | errorMessage : { maxlength: [50] } }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="40" fxFlex.md="40">
             <mat-label>{{ 'clients.formClient.middlename' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.middlename' | translate }}" formControlName="middlename" required>
-            <!-- <mat-error *ngIf="formPersonalData.get('middlename').invalid">
-              {{ formPersonalData.get('middlename').errors | errorMessage : { maxlength: [50] } }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('middlename').invalid">
+              {{ formClient.get('middlename').errors | errorMessage : { maxlength: [50] } }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="40" fxFlex.md="40">
             <mat-label>{{ 'lastname' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.lastname' | translate }}" formControlName="lastname" required>
-            <!-- <mat-error *ngIf="formPersonalData.get('lastname').invalid">
-              {{ formPersonalData.get('lastname').errors | errorMessage : { maxlength: [50] } }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('lastname').invalid">
+              {{ formClient.get('lastname').errors | errorMessage : { maxlength: [50] } }}
+            </mat-error>
           </mat-form-field>
         </div>
   
@@ -51,9 +52,9 @@
               <mat-option [value]="1">Hombre</mat-option>
               <mat-option [value]="2">Mujer</mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="formPersonalData.get('genderId').invalid">
-              {{ formPersonalData.get('genderId').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('genderId').invalid">
+              {{ formClient.get('genderId').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="calc(50% - 15px)" fxFlex.md="calc(20.5% - 15px)">
@@ -61,9 +62,9 @@
               <mat-option value="1">Casado</mat-option>
               <mat-option value="2">Soltero</mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="formPersonalData.get('maritalStatus').invalid">
-              {{ formPersonalData.get('maritalStatus').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('maritalStatus').invalid">
+              {{ formClient.get('maritalStatus').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.sm="calc(50% - 15px)" fxFlex.md="calc(20.5% - 15px)">
@@ -85,25 +86,25 @@
           <mat-form-field fxFlex.xs="100%" fxFlex.md="40">
             <mat-label>{{ 'clients.formClient.electorKey' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.electorKey' | translate }}" formControlName="electorKey">
-            <!-- <mat-error *ngIf="formPersonalData.get('electorKey').invalid">
-              {{ formPersonalData.get('electorKey').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('electorKey').invalid">
+              {{ formClient.get('electorKey').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="40">
             <mat-label>{{ 'clients.formClient.curp' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.curp' | translate }}" formControlName="curp" required>
-            <!-- <mat-error *ngIf="formPersonalData.get('curp').invalid">
-              {{ formPersonalData.get('curp').errors | errorMessage : { pattern: ['la CURP'] } }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('curp').invalid">
+              {{ formClient.get('curp').errors | errorMessage : { pattern: ['la CURP'] } }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="40">
             <mat-label>{{ 'clients.formClient.rfc' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.rfc' | translate }}" formControlName="rfc" required>
-            <!-- <mat-error *ngIf="formPersonalData.get('rfc').invalid">
-              {{ formPersonalData.get('rfc').errors | errorMessage : { pattern: ['el RFC'] } }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('rfc').invalid">
+              {{ formClient.get('rfc').errors | errorMessage : { pattern: ['el RFC'] } }}
+            </mat-error>
           </mat-form-field>
         </div>
   
@@ -125,18 +126,18 @@
             <input matInput [matDatepicker]="birthday" placeholder="{{ 'clients.formClient.birthday' | translate }}" formControlName="birthday" required>
             <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
             <mat-datepicker #birthday disabled="false"></mat-datepicker>
-            <!-- <mat-error *ngIf="formPersonalData.get('birthday').invalid">
-              {{ formPersonalData.get('birthday').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('birthday').invalid">
+              {{ formClient.get('birthday').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
             <mat-select placeholder="{{ 'clients.formClient.birthdayEntity' | translate }}" formControlName="birthdayEntity" required>
               <mat-option value="1">Chiapas -CS</mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="formPersonalData.get('birthdayEntity').invalid">
-              {{ formPersonalData.get('birthdayEntity').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('birthdayEntity').invalid">
+              {{ formClient.get('birthdayEntity').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
         </div>
   
@@ -146,17 +147,17 @@
             <input matInput [matDatepicker]="requestDate" placeholder="{{ 'clients.formClient.requestDate' | translate }}" formControlName="requestDate" required>
             <mat-datepicker-toggle matSuffix [for]="requestDate"></mat-datepicker-toggle>
             <mat-datepicker #requestDate disabled="false"></mat-datepicker>
-            <!-- <mat-error *ngIf="formPersonalData.get('requestDate').invalid">
-              {{ formPersonalData.get('requestDate').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('requestDate').invalid">
+              {{ formClient.get('requestDate').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field fxFlex.xs="100%" fxFlex.md="50">
             <mat-label>{{ 'clients.formClient.numberDependents' | translate }}</mat-label>
             <input matInput type="text" placeholder="{{ 'clients.formClient.numberDependents' | translate }}" formControlName="numberDependents">
-            <!-- <mat-error *ngIf="formPersonalData.get('numberDependents').invalid">
-              {{ formPersonalData.get('numberDependents').errors | errorMessage }}
-            </mat-error> -->
+            <mat-error *ngIf="formClient.get('numberDependents').invalid">
+              {{ formClient.get('numberDependents').errors | errorMessage }}
+            </mat-error>
           </mat-form-field>
         </div>
   

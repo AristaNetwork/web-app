@@ -6,7 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 /** Tanslation Imports */
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 /** Chart Imports */
@@ -37,7 +37,11 @@ import { SystemModule } from './system/system.module';
 /** Main Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 
+// Services
 import { I18nService } from '../app/core/i18n/i18n.service';
+
+// Modules
+import { ErrorMessageModule, ErrorMessageLoader, ErrorMessageHttpLoader } from '@pipes/error-message/error-message';
 
 // Resgister langs
 import { registerLocaleData } from '@angular/common';
@@ -45,6 +49,21 @@ import localeMX from '@angular/common/locales/es-MX';
 
 // Resgisting the langs
 registerLocaleData( localeMX, 'es-MX' );
+
+// AoT requires an exported function for factories, it charges the json with all translations
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
+
+// AoT requires an exported function for factories, it charges the json with all error messages
+export function loaderErrorsFactory(http: HttpClient) {
+  return new ErrorMessageHttpLoader(http, 'assets/i18n-errors/', '.json');
+}
+
+// Configure the language to the app
+export function getLanguage(s: I18nService) {
+  return s.language;
+}
 
 /**
  * App Module
@@ -58,13 +77,18 @@ registerLocaleData( localeMX, 'es-MX' );
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        provide: TranslateLoader, // clase abstracta que se va a llamar como clave en el injector
+        useFactory: HttpLoaderFactory, // metodo que devuelve la clase a usar como valor de TranslateLoader { TranslateLoader: 'Valor del factory' }
         deps: [ HttpClient ]
       }
     }),
+    ErrorMessageModule.forRoot({
+      provide: ErrorMessageLoader,
+      useFactory: loaderErrorsFactory,
+      deps: [ HttpClient ]
+    }),
 
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
+    // ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     NgxChartsModule,
     CoreModule,
     HomeModule,
@@ -88,13 +112,3 @@ registerLocaleData( localeMX, 'es-MX' );
   bootstrap: [WebAppComponent]
 })
 export class AppModule { }
-
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
-}
-
-// Configure the language to the app
-export function getLanguage(s: I18nService) {
-  return s.language;
-}

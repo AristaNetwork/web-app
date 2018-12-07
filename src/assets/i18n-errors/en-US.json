@@ -1,0 +1,12 @@
+{
+    "required": "This field is required",
+    "requiredTrim": "This field is required",
+    "maxlength": "Excede el número máximo de {*} caracteres",
+    "minlength": "Número mínimo de {*} caracteres requerido",
+    "isNumber": "Tiene que ser numérico",
+    "isPhone": "Tiene que ser un número válido",
+    "isEmail": "No es un correo válido",
+    "greaterThan": "Tiene que ser mayor a {*}",
+    "lessThan": "Tiene que ser menor a {*}",
+    "pattern": "El formato de {*} no es válido"
+}
